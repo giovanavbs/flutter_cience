@@ -35,14 +35,14 @@ class MyListView extends StatelessWidget {
     return ListView.builder(
       itemCount: 6, // numero total de elementos criador(como é um exemplo estatico coloquei 6, mas futuramente será uma variavel)
       itemBuilder: (BuildContext context, int index) {
-        return const ImageItem();
+        return const exposicao();
       },
     );
   }
 }
 
-class ImageItem extends StatelessWidget {
-  const ImageItem({super.key});
+class exposicao extends StatelessWidget {
+  const exposicao({super.key});
 
   @override
   Widget build(BuildContext context) {
