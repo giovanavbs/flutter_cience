@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'main.dart';
 
 void cientistaTela(BuildContext context) {
   Navigator.push(
@@ -50,8 +51,7 @@ class Cientista extends StatelessWidget {
       ),
     ),
   );
-}
-
+ }
 }
 
 
@@ -124,87 +124,4 @@ class Biografia extends StatelessWidget {
       ),
     );
   }
-}
-
-// classe para o menu inferior que sobrepõe tudo na tela, diferente da tela exposição
-
-class menuInferior extends StatelessWidget {
-  const menuInferior({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Positioned(
-      left: 0,
-      right: 0,
-      bottom: 0,
-      child: Container(
-        height: 80,
-        color: const Color(0xFF363636),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [ Expanded(  
-              child: Center(
-                child: Image.asset(
-                  'assets/images/museus.png',
-                  width: 50, 
-                  height: 50, 
-                ),
-              ),
-            ),
-            const Text(
-              'Museus',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 16,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-// classe para o menu superior que sobrepõe tudo na tela
-
-class menuSuperior extends StatelessWidget {
-  const menuSuperior({super.key});
-
-  @override
-Widget build(BuildContext context) {
-  return Container(
-    height: 80,
-    width: double.infinity, // pegar o width inteiro da tela
-    padding: const EdgeInsets.all(20.0),
-    color: const Color(0xFF363636),
-    child: Stack(
-      children: [
-        Positioned(
-          left: 0,
-          right: 0,
-          top: 0,
-          bottom: 0,
-          child: Center(
-            child: Image.asset(
-              'assets/images/fantastic.png',
-              width: 50, 
-              height: 50, 
-            ),
-          ),
-        ),
-        Positioned(
-          right: 0,
-          top: 0,
-          bottom: 0,
-          child: Image.asset(
-            'assets/images/login.png',
-            width: 50, 
-            height: 50, 
-            alignment: Alignment.centerLeft,
-          ),
-        ),
-      ],
-    ),
-  );
-}
 }
