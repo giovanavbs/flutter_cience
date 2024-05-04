@@ -6,7 +6,7 @@ void cientistaTela(BuildContext context) {
     context,
     MaterialPageRoute(builder: (context) => const Cientista()), 
   );
-}
+} // metodo criado para o botão da exposição trazer para esta tela
 
 void main() {
   runApp(const Cientista());

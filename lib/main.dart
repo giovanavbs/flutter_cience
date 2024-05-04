@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_cience/favorito.dart';
 import 'museu.dart'; 
 import 'cientista.dart'; 
-// import 'favoritos.dart'; 
+import 'favorito.dart'; 
 
 void main() {
   runApp(const MainApp());

@@ -2,13 +2,6 @@ import 'package:flutter/material.dart';
 import 'cientista.dart';
 import 'main.dart';
 
-void MuseusTela(BuildContext context) {
-  Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => const Exp()), 
-  );
-}
-
 void main() {
   runApp(const Exp());
 }
@@ -52,8 +45,7 @@ Widget build(BuildContext context) {
       ),
     ),
   );
-}
-
+ }
 }
 
 class MuseusExp extends StatelessWidget {
@@ -114,7 +106,7 @@ class exposicao extends StatelessWidget {
                   child: Container(
                     width: 400,
                     color: const Color(0xFF04856D),
-                    child: const Center(child: Text(' descrição da exposição')), // center utilizado para que o texto esteja centralizado, o const esta sendo usado aqui pq é um exemplo, no futuro quando for usado uma variavel o valor vai deixar de ser constante
+                    child: const Center(child: Text('descrição da exposição')), // center utilizado para que o texto esteja centralizado, o const esta sendo usado aqui pq é um exemplo, no futuro quando for usado uma variavel o valor vai deixar de ser constante
                   ),
                 ),
                 Flexible(
@@ -125,7 +117,7 @@ class exposicao extends StatelessWidget {
                     child: TextButton(
                       onPressed: () {
                         // ação quando o botão for pressionado, o print é só para teste, no futuro vai redirecionar para a tela de cientistas
-                         cientistaTela(context); // Chama a função de navegação
+                         cientistaTela(context); // função criada para este botão(chama a tela de cientistas)
                       }, 
                         child: const Align( // const apenas para ele parar de dar erro
                         alignment: Alignment.centerLeft,

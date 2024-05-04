@@ -2,13 +2,6 @@ import 'package:flutter/material.dart';
 import 'main.dart';
 import 'exposicao.dart';
 
-void museusTela(BuildContext context) {
-  Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => const Museus()), 
-  );
-}
-
 void main() {
   runApp(const Museus());
 }
