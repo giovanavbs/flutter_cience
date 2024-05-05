@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_cience/favorito.dart';
 import 'museu.dart'; 
 import 'cientista.dart'; 
-import 'favorito.dart'; 
+import 'login.dart'; 
 
 void main() {
   runApp(const MainApp());
@@ -52,46 +52,56 @@ class MainApp extends StatelessWidget {
 
 // classe para o menu superior que sobrepõe tudo na tela - criei fora pq dentro era uma bagunça com chaves e stack tudo torto
 
+
+
 class menuSuperior extends StatelessWidget {
   const menuSuperior({super.key});
 
   @override
-Widget build(BuildContext context) {
-  return Container(
-    height: 80,
-    width: double.infinity, // pegar o width inteiro da tela
-    padding: const EdgeInsets.all(20.0),
-    color: const Color(0xFF363636),
-    child: Stack(
-      children: [
-        Positioned(
-          left: 0,
-          right: 0,
-          top: 0,
-          bottom: 0, // sem padding 
-          child: Center(
-            child: Image.asset(
-              'assets/images/fantastic.png',
-              width: 50, 
-              height: 50, 
+  Widget build(BuildContext context) {
+    return Container(
+      height: 80,
+      width: double.infinity, // pegar o width inteiro da tela
+      padding: const EdgeInsets.all(20.0),
+      color: const Color(0xFF363636),
+      child: Stack(
+        children: [
+          Positioned(
+            left: 0,
+            right: 0,
+            top: 0,
+            bottom: 0, 
+            child: Center(
+              child: Image.asset(
+                'assets/images/fantastic.png',
+                width: 50,
+                height: 50,
+              ),
             ),
           ),
-        ),
-        Positioned(
-          right: 0,
-          top: 0,
-          bottom: 0, // todos zerados menos left pra ficar alinahdo a esquerda
-          child: Image.asset(
-            'assets/images/login.png',
-            width: 50, 
-            height: 50, 
-            alignment: Alignment.centerLeft,
+          Positioned(
+            right: 0, 
+            top: 0,
+            bottom: 0, 
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Login()),
+                );
+              },
+              child: Image.asset(
+                'assets/images/login.png',
+                width: 50,
+                height: 50,
+                alignment: Alignment.centerLeft,
+              ),
+            ),
           ),
-        ),
-      ],
-    ),
-  );
-}
+        ],
+      ),
+    );
+  }
 }
 
 // classe real da tela

@@ -103,6 +103,7 @@ class _FavoritoListaState extends State<FavoritoLista> {
 } */
 
 // classe favoritar com o container do cientista sendo exibido quando o usuario favorita
+
 class FavoritoLista extends StatefulWidget {
   const FavoritoLista({super.key});
 

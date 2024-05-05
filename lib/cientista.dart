@@ -155,7 +155,7 @@ class Biografia extends StatelessWidget {
                 const Positioned( // nesse positioned ele quer o const? mas nos outros fica de boa?
                   top: 0,
                   right: 0,
-                  child: FavoritoLista(), // adicionando o favorito
+                  child: FavoritoLista(), // adicionando a imagem e funcionalidade do facorito
                 ),
                 Positioned(
                   child: Container(
