@@ -1,5 +1,7 @@
-import 'main.dart';
 import 'package:flutter/material.dart';
+import 'cientista.dart';
+import 'main.dart';
+
 
 
 void main() {
@@ -62,6 +64,7 @@ class YellowBird extends StatefulWidget {
   }
 } */ 
 
+/*
 class FavoritoLista extends StatefulWidget { // StatelessWidget foi retirado dessa classe pq só aceita valores constantes(e dava erro por conta das variaveis)
   const FavoritoLista({super.key});
 
@@ -97,7 +100,54 @@ class _FavoritoListaState extends State<FavoritoLista> {
       ),
     );
   }
+} */
+
+// classe favoritar com o container do cientista sendo exibido quando o usuario favorita
+class FavoritoLista extends StatefulWidget {
+  const FavoritoLista({super.key});
+
+  @override
+  State<FavoritoLista> createState() => _FavoritoListaState();
 }
 
+class _FavoritoListaState extends State<FavoritoLista> {
+  bool favoritar = true;
 
+  @override
+  Widget build(BuildContext context) {
+    Widget imgAtual;
 
+    if (favoritar) {
+      imgAtual = Image.asset('assets/images/favoritos.png');
+    } else {
+      imgAtual = Image.asset('assets/images/favoritado.png');
+    }
+
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          favoritar = favoritar == false;
+        });
+      },
+      child: Container(
+        width: 50,
+        height: 50,
+        child: Stack(
+          children: [
+            if (favoritar == false)
+              Container(
+                width: 200,
+                height: 200, 
+                child: Biografia(),
+              ),
+            Positioned.fill(
+              child: imgAtual,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// por chamar essa classe no cientista.dart pra imagem de favoritar aparecer os container sao exibidos nas duas telas e no tamanho errado(provavelmente por causa da definição do tamanho da imagem de favoritar) nao sei como resolver esses 2 erros

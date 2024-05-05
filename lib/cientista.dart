@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'main.dart';
+import 'favorito.dart';
 
 void cientistaTela(BuildContext context) {
   Navigator.push(
@@ -69,7 +70,7 @@ class CientistaBio extends StatelessWidget {
   }
 }
 
-class Biografia extends StatelessWidget {
+/*class Biografia extends StatelessWidget {
   const Biografia({super.key});
 
   @override
@@ -124,4 +125,66 @@ class Biografia extends StatelessWidget {
       ),
     );
   }
+} */
+
+class Biografia extends StatelessWidget {
+  const Biografia({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Container(
+            height: 250,
+            child: Stack(
+              alignment: Alignment.bottomLeft,
+              children: <Widget>[
+                Container(
+                  width: 200,
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage("assets/images/exp1.jpg"),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                const Positioned( // nesse positioned ele quer o const? mas nos outros fica de boa?
+                  top: 0,
+                  right: 0,
+                  child: FavoritoLista(), // adicionando o favorito
+                ),
+                Positioned(
+                  child: Container(
+                    color: const Color(0xFF0072ce),
+                    width: 200,
+                    height: 30,
+                    child: const Center(
+                      child: Text('nome da exposição'),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            width: 350,
+            height: 150,
+            color: const Color(0xFF0f456f),
+            child: const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text(
+                'biografia do cientista',
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }
+
