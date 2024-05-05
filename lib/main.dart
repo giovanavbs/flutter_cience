@@ -105,40 +105,119 @@ class menuSuperior extends StatelessWidget {
 }
 
 // classe real da tela
-
 class Inicio extends StatelessWidget {
-  const Inicio({super.key});
+  const Inicio({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
+      children: [ Stack( // stack pro texto sobrepor a imagem
+          children: [
+            Container(
+              height: 200,
+              width: double.infinity, // pra imagem ocupar a largura inteira da img
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/images/sp.jpeg'),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            const Positioned(
+              left: 10,
+              bottom: 10,
+              child: Column( // pra adicionar os dois textos um abaixo do outro
+                crossAxisAlignment: CrossAxisAlignment.start, // alinhado a esquerda
+                children: [
+                  Text(
+                    'Explore \n São Paulo',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18.0,
+                    ),
+                  ),
+                  Text(
+                    'Descubra a relevância de \n São Paulo para a ciência.',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 15.0,
+                    ),
+                  ),
+                ], 
+              ), 
+            ), 
+          ], 
+        ), 
         Container(
-          height: 200, 
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/images/sp.jpeg'), 
-              fit: BoxFit.cover, 
+          alignment: Alignment.centerLeft,
+          child: Container(
+            margin: const EdgeInsets.only(top: 10, left: 10), // 10 pixels de distância da direita
+            width: 120,
+            height: 40,
+            color: const Color(0xFF00FFD1),
+            child: const Center(
+              child: Text(
+                'CONHEÇA',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20.0,
+                ),
+              ),
             ),
           ),
         ),
         Container(
-          margin: const EdgeInsets.only(top: 20), // espaço entre a imagem e texto
-          padding: const EdgeInsets.all(20.0), // espaço entre as bordas pro texto nao colar
-          // color: Colors.blue, 
-          child: const Text(
-            'bla bla bla', 
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 20.0, 
+          margin: const EdgeInsets.symmetric(vertical: 10), // espaço entre os containers
+          width: 450,
+          height: 80,
+          child: const Center(
+            child: Text(
+              'As exposições por trás dos museus de história da ciência.',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18.0,
+              ),
             ),
           ),
         ),
-      ],
+        Container(
+          margin: const EdgeInsets.symmetric(vertical: 10),
+          width: 450,
+          height: 80,
+          child: const Center(
+            child: Text(
+              'As personalidades dos maiores nomes da ciência que saíram do estado.',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18.0,
+              ),
+            ),
+          ),
+        ),
+        Container(
+          margin: const EdgeInsets.symmetric(vertical: 10),
+          width: 450,
+          height: 80,
+          child: const Center(
+            child: Text(
+              'As suas informações favoritas armazenadas em um só lugar.',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18.0,
+              ),
+            ),
+          ),
+        ),
+      ], 
     );
   }
 }
+
+
+
+
+
+
 
 /* menuInferior anterior que nao era clicavel
 class menuInferior extends StatelessWidget {
