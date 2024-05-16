@@ -142,7 +142,7 @@ class MuseusNome extends StatelessWidget {
                       height: 30,
                       child: const Center(
                         child: Text(
-                          'museu nome',
+                          'Masp',
                           style: TextStyle(color: Colors.white),
                         ),
                       ),
