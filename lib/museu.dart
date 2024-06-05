@@ -92,7 +92,7 @@ class MuseusNome extends StatelessWidget {
                         width: double.infinity,
                         decoration: const BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage("assets/images/exp1.jpg"),
+                            image: AssetImage("assets/images/masp.jpg"),
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -104,7 +104,7 @@ class MuseusNome extends StatelessWidget {
                           height: 30,
                           child: const Center(
                             child: Text(
-                              'nome museu 1',
+                              'Masp',
                               style: TextStyle(color: Colors.white),
                             ),
                           ),
@@ -132,7 +132,7 @@ class MuseusNome extends StatelessWidget {
                         width: double.infinity,
                         decoration: const BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage("assets/images/exp2.jpg"),
+                            image: AssetImage("assets/images/museucatavento.jpg"),
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -144,7 +144,7 @@ class MuseusNome extends StatelessWidget {
                           height: 30,
                           child: const Center(
                             child: Text(
-                              'nome museu 2',
+                              'Museu Catavento',
                               style: TextStyle(color: Colors.white),
                             ),
                           ),
@@ -232,94 +232,6 @@ class MuseusNome extends StatelessWidget {
                             child: const Center(
                               child: Text(
                                 'nome museu 4',
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 440.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Exp()),
-                    );
-                  },
-                  child: Container(
-                    height: 200,
-                    width: 200,
-                    alignment: Alignment.centerLeft,
-                    child: Stack(
-                      alignment: Alignment.bottomLeft,
-                      children: <Widget>[
-                        Container(
-                          width: double.infinity,
-                          decoration: const BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage("assets/images/exp1.jpg"),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          child: Container(
-                            color: const Color(0xFF0072ce),
-                            width: 200,
-                            height: 30,
-                            child: const Center(
-                              child: Text(
-                                'nome museu 5',
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Exp()),
-                    );
-                  },
-                  child: Container(
-                    height: 200,
-                    width: 200,
-                    alignment: Alignment.centerRight,
-                    child: Stack(
-                      alignment: Alignment.bottomLeft,
-                      children: <Widget>[
-                        Container(
-                          width: double.infinity,
-                          decoration: const BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage("assets/images/exp2.jpg"),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          child: Container(
-                            color: const Color(0xFF0072ce),
-                            width: 200,
-                            height: 30,
-                            child: const Center(
-                              child: Text(
-                                'nome museu 6',
                                 style: TextStyle(color: Colors.white),
                               ),
                             ),

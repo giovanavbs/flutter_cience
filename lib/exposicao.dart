@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_cience/expo.dart';
 import 'cientista.dart';
 import 'main.dart';
 
@@ -56,18 +57,46 @@ class MuseusExp extends StatelessWidget {
     return ListView.builder(
       itemCount: 6, // numero total de elementos criados, coloquei 6 de exemplo
       itemBuilder: (BuildContext context, int index) {
-        return const exposicao();
+        return const Exposicao();
       },
     );
   }
 }
 
-class exposicao extends StatelessWidget {
-  const exposicao({super.key});
+
+
+
+
+class ExposiApp extends StatefulWidget {
+  const ExposiApp({super.key});
+
 
   @override
+  ExposiAPP createState() => ExposiAPP();
+}
+
+class ExposiAPP extends State<ExposiApp> {
+
+
+List<Expo> expos = [ const Expo("nome", 'descricaoExpo', 'nomeC', 'img'),
+                      const Expo('nomeExpo', 'descricaoExpo', 'nomeCientista', 'img') ];
+
+
+
+  @override
+  void initState() {
+    super.initState();
+    }
+
+    @override
   Widget build(BuildContext context) {
-    return Padding(
+  return  ListView.builder(
+         itemCount: expos.length,
+         shrinkWrap: true,
+        padding: const EdgeInsets.all(5),
+        scrollDirection: Axis.vertical,
+        itemBuilder: (BuildContext, index){
+        return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -114,23 +143,19 @@ class exposicao extends StatelessWidget {
                     width: 400,
                     height: 40,
                     color: const Color(0xFF00FFD1),
-                    child: TextButton(
-                      onPressed: () {
-                        // ação quando o botão for pressionado, o print é só para teste, no futuro vai redirecionar para a tela de cientistas
-                         cientistaTela(context); // função criada para este botão(chama a tela de cientistas)
-                      }, 
-                        child: const Align( // const apenas para ele parar de dar erro
-                        alignment: Alignment.centerLeft,
-                        child: Text('nome do principal cientista'),   
+                    child: const Align( // const apenas para ele parar de dar erro
+                    alignment: Alignment.centerLeft,
+                    child: Text('nome do principal cientista'),   
                     ),
                     ),
                   ),
-                ),
               ],
             ),
           ),
         ],
       ),
     );
-  }
-} 
+   },
+  );
+}
+}

@@ -70,62 +70,7 @@ class CientistaBio extends StatelessWidget {
   }
 }
 
-/*class Biografia extends StatelessWidget {
-  const Biografia({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start, 
-        children: <Widget>[
-          Container(
-            height: 200, 
-            child: Stack( 
-              alignment: Alignment.bottomLeft, 
-              children: <Widget>[
-                Container(
-                  width: 150,
-                  decoration: const BoxDecoration(
-                  image: DecorationImage(
-                  image: AssetImage("assets/images/exp1.jpg"), 
-                  fit: BoxFit.cover, 
-                ),
-               ),
-              ),
-                Positioned(
-                  child: Container(
-                    color: const Color(0xFF0072ce),
-                    width: 180,
-                    height: 30,
-                    child: const Center(child: Text(
-                      'nome da exposição'
-                      ),
-                      ),
-                    ),
-                  ),
-              ],
-            ),
-          ),
-          Container(
-            width: 300, 
-            height: 100,
-            color: const Color(0xFF0f456f),
-            child: const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Text(
-                'biografia do cientista',
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-} */
 
 class Biografia extends StatelessWidget {
   const Biografia({super.key});
@@ -158,22 +103,23 @@ class Biografia extends StatelessWidget {
                   child: FavoritoLista(), // adicionando a imagem e funcionalidade do facorito
                 ),
                 Positioned(
-                  child: Container(
-                    color: const Color(0xFF0072ce),
-                    width: 200,
+                  child: const SizedBox(
+                    
+                    width: 200, 
                     height: 30,
-                    child: const Center(
-                      child: Text('nome da exposição'),
+                    child: Center(
+                    
+                      child: Text('nome da exposição' ),
                     ),
                   ),
                 ),
               ],
             ),
           ),
-          Container(
+          SizedBox(
             width: 350,
             height: 150,
-            color: const Color(0xFF0f456f),
+           // color: const Color(0xFF0f456f),
             child: const Padding(
               padding: EdgeInsets.all(8.0),
               child: Text(
