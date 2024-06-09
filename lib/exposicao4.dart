@@ -4,11 +4,11 @@ import 'favorito.dart';
 import 'main.dart';
 
 void main() {
-  runApp(const Exp());
+  runApp(const Exposicao4());
 }
 
-class Exp extends StatelessWidget {
-  const Exp({super.key});
+class Exposicao4 extends StatelessWidget {
+  const Exposicao4({super.key});
 
 @override
 Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ Widget build(BuildContext context) {
             Positioned.fill( // deixa as duas classes de menu sobreporem a lista
               top: 80, // pra lista nao ficar por baixo do container do menu
               child: Center(
-                child: ExposiApp(),
+                child: ExpApp(),
               ),
             ),
             Positioned(
@@ -50,18 +50,18 @@ Widget build(BuildContext context) {
  }
 }
 
-class ExposiApp extends StatefulWidget {
-  const ExposiApp({super.key});
+class ExpApp extends StatefulWidget {
+  const ExpApp({super.key});
 
   @override
-  ExposiAPP createState() => ExposiAPP();
+  ExpAPP createState() => ExpAPP();
 }
 
-class ExposiAPP extends State<ExposiApp> {
+class ExpAPP extends State<ExpApp> {
   // Lista para armazenar os itens favoritos
   List<Expo> expos = [
-    const Expo("FRANCIS BACON: A BELEZA DA CARNE", 'O pintor irlandês Francis Bacon (1909-1992) foi um dos artistas mais extraordinários do século 20, e esta é a primeira exposição individual no Brasil dedicada a sua obra. Ao criar um conjunto de pinturas tão radical quanto arrebatador, o artista revolucionou o modo de pintar a figura humana.', 'FRANCIS BACON', 'FRANCIS.png'),
-    const Expo('ACERVO EM TRANSFORMAÇÃO', 'Acervo em transformação é o título da exposição de longa duração da coleção do MASP. As obras são instaladas nos cavaletes de cristal — placas de vidro encaixadas em blocos de concreto — que ficam dispostos em fileiras sem divisórias na sala ampla do segundo andar do museu.', 'Sem artista definido', 'acervo1.jpg')
+    const Expo("HISTÓRIA DA BÍBLIA", 'Nesta seção, é possível conhecer o processo de escrita, compilação e tradução da Bíblia. Em cada letra da palavra BÍBLIA, são expostos materiais que foram utilizados para a escrita da Bíblia. No centro do espaço, está em exposição uma das Bíblias impressas mais antigas da história: trata-se de uma Vulgata Latina de 1528.', 'Sem autor definido', 'historia.jpg'),
+    const Expo('JARDIM DA BÍBLIA', 'Um dos pontos mais surpreendentes da visitação ao MAB é o Jardim da Bíblia. No pátio externo foi construído um jardim com 17 espécies de árvores mencionadas na Bíblia – cedro, oliveira, tamareira, videira, romeira etc. - distribuídas de forma paisagística e ornamental. Entre as árvores, plantas bíblicas como o joio, o trigo, o papiro, entre outras, foram espalhadas.', 'Sem artista definido', 'jardim.jpg')
   ];
 
   List<Expo> favoritos = [];
@@ -141,7 +141,7 @@ class ExposiAPP extends State<ExposiApp> {
                           ),
                         ),
                         SizedBox(
-                          height: 200,
+                          height: 300,
                           child: Column(
                             children: <Widget>[
                               Flexible(

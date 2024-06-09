@@ -136,7 +136,7 @@ class Inicio extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'Descubra a relevância de \n São Paulo para a ciência.',
+                    'Descubra a relevância de \n São Paulo para a arte.',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 15.0,
@@ -171,7 +171,7 @@ class Inicio extends StatelessWidget {
           height: 80,
           child: const Center(
             child: Text(
-              'As exposições por trás dos museus de história da ciência.',
+              'As exposições por trás dos museus expalhados por São Paulo.',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 18.0,
@@ -185,7 +185,7 @@ class Inicio extends StatelessWidget {
           height: 80,
           child: const Center(
             child: Text(
-              'As personalidades dos maiores nomes da ciência que saíram do estado.',
+              'Diversos artistas excelentes, se expressando atráves da arte.',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 18.0,

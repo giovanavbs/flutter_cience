@@ -4,11 +4,11 @@ import 'favorito.dart';
 import 'main.dart';
 
 void main() {
-  runApp(const Exp());
+  runApp(const Exposi());
 }
 
-class Exp extends StatelessWidget {
-  const Exp({super.key});
+class Exposi extends StatelessWidget {
+  const Exposi({super.key});
 
 @override
 Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ Widget build(BuildContext context) {
             Positioned.fill( // deixa as duas classes de menu sobreporem a lista
               top: 80, // pra lista nao ficar por baixo do container do menu
               child: Center(
-                child: ExposiApp(),
+                child: ExpoApp(),
               ),
             ),
             Positioned(
@@ -50,18 +50,18 @@ Widget build(BuildContext context) {
  }
 }
 
-class ExposiApp extends StatefulWidget {
-  const ExposiApp({super.key});
+class ExpoApp extends StatefulWidget {
+  const ExpoApp({super.key});
 
   @override
-  ExposiAPP createState() => ExposiAPP();
+  ExpoAPP createState() => ExpoAPP();
 }
 
-class ExposiAPP extends State<ExposiApp> {
+class ExpoAPP extends State<ExpoApp> {
   // Lista para armazenar os itens favoritos
   List<Expo> expos = [
-    const Expo("FRANCIS BACON: A BELEZA DA CARNE", 'O pintor irlandês Francis Bacon (1909-1992) foi um dos artistas mais extraordinários do século 20, e esta é a primeira exposição individual no Brasil dedicada a sua obra. Ao criar um conjunto de pinturas tão radical quanto arrebatador, o artista revolucionou o modo de pintar a figura humana.', 'FRANCIS BACON', 'FRANCIS.png'),
-    const Expo('ACERVO EM TRANSFORMAÇÃO', 'Acervo em transformação é o título da exposição de longa duração da coleção do MASP. As obras são instaladas nos cavaletes de cristal — placas de vidro encaixadas em blocos de concreto — que ficam dispostos em fileiras sem divisórias na sala ampla do segundo andar do museu.', 'Sem artista definido', 'acervo1.jpg')
+    const Expo("A ORIGEM DA VIDA", 'Como surgiu e qual é o seu lugar entre os seres vivos?', 'Sem autor definido', 'origem.jpg'),
+    const Expo('VIDA NO OCEANO', ' ANIMAIS NO OCEANO: O que você vê parece plantas, mas são animais.', 'Sem autor definido', 'OCEANO.jpeg')
   ];
 
   List<Expo> favoritos = [];

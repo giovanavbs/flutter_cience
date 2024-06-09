@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_cience/exposicao2.dart';
+import 'package:flutter_cience/exposicao3.dart';
+import 'package:flutter_cience/exposicao4.dart';
 import 'main.dart';
 import 'exposicao.dart';
 
@@ -82,8 +85,8 @@ class MuseusNome extends StatelessWidget {
                   );
                 },
                 child: Container(
-                  height: 200,
-                  width: 200,
+                  height: 190,
+                  width: 190,
                   alignment: Alignment.centerLeft,
                   child: Stack(
                     alignment: Alignment.bottomLeft,
@@ -118,12 +121,12 @@ class MuseusNome extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Exp()),
+                    MaterialPageRoute(builder: (context) => Exposi()),
                   );
                 },
                 child: Container(
-                  height: 200,
-                  width: 200,
+                  height: 190,
+                  width: 190,
                   alignment: Alignment.centerRight,
                   child: Stack(
                     alignment: Alignment.bottomLeft,
@@ -165,12 +168,12 @@ class MuseusNome extends StatelessWidget {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Exp()),
+                      MaterialPageRoute(builder: (context) => Exposicao()),
                     );
                   },
                   child: Container(
-                    height: 200,
-                    width: 200,
+                    height: 190,
+                    width: 190,
                     alignment: Alignment.centerLeft,
                     child: Stack(
                       alignment: Alignment.bottomLeft,
@@ -179,7 +182,7 @@ class MuseusNome extends StatelessWidget {
                           width: double.infinity,
                           decoration: const BoxDecoration(
                             image: DecorationImage(
-                              image: AssetImage("assets/images/exp1.jpg"),
+                              image: AssetImage("assets/images/museufavelas.jpg"),
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -191,7 +194,7 @@ class MuseusNome extends StatelessWidget {
                             height: 30,
                             child: const Center(
                               child: Text(
-                                'nome museu 3',
+                                'Museu das Favelas',
                                 style: TextStyle(color: Colors.white),
                               ),
                             ),
@@ -205,12 +208,12 @@ class MuseusNome extends StatelessWidget {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Exp()),
+                      MaterialPageRoute(builder: (context) => Exposicao4()),
                     );
                   },
                   child: Container(
-                    height: 200,
-                    width: 200,
+                    height: 190,
+                    width: 190,
                     alignment: Alignment.centerRight,
                     child: Stack(
                       alignment: Alignment.bottomLeft,
@@ -219,7 +222,7 @@ class MuseusNome extends StatelessWidget {
                           width: double.infinity,
                           decoration: const BoxDecoration(
                             image: DecorationImage(
-                              image: AssetImage("assets/images/exp2.jpg"),
+                              image: AssetImage("assets/images/MAB.jpeg"),
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -228,10 +231,10 @@ class MuseusNome extends StatelessWidget {
                           child: Container(
                             color: const Color(0xFF0072ce),
                             width: 200,
-                            height: 30,
+                            height: 40,
                             child: const Center(
                               child: Text(
-                                'nome museu 4',
+                                'MAB: Museu da Arqueologia Bíblica',
                                 style: TextStyle(color: Colors.white),
                               ),
                             ),

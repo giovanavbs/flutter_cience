@@ -4,11 +4,11 @@ import 'favorito.dart';
 import 'main.dart';
 
 void main() {
-  runApp(const Exp());
+  runApp(const Exposicao());
 }
 
-class Exp extends StatelessWidget {
-  const Exp({super.key});
+class Exposicao extends StatelessWidget {
+  const Exposicao({super.key});
 
 @override
 Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ Widget build(BuildContext context) {
             Positioned.fill( // deixa as duas classes de menu sobreporem a lista
               top: 80, // pra lista nao ficar por baixo do container do menu
               child: Center(
-                child: ExposiApp(),
+                child: ExposicaoApp(),
               ),
             ),
             Positioned(
@@ -50,18 +50,18 @@ Widget build(BuildContext context) {
  }
 }
 
-class ExposiApp extends StatefulWidget {
-  const ExposiApp({super.key});
+class ExposicaoApp extends StatefulWidget {
+  const ExposicaoApp({super.key});
 
   @override
-  ExposiAPP createState() => ExposiAPP();
+  ExposicaoAPP createState() => ExposicaoAPP();
 }
 
-class ExposiAPP extends State<ExposiApp> {
+class ExposicaoAPP extends State<ExposicaoApp> {
   // Lista para armazenar os itens favoritos
   List<Expo> expos = [
-    const Expo("FRANCIS BACON: A BELEZA DA CARNE", 'O pintor irlandês Francis Bacon (1909-1992) foi um dos artistas mais extraordinários do século 20, e esta é a primeira exposição individual no Brasil dedicada a sua obra. Ao criar um conjunto de pinturas tão radical quanto arrebatador, o artista revolucionou o modo de pintar a figura humana.', 'FRANCIS BACON', 'FRANCIS.png'),
-    const Expo('ACERVO EM TRANSFORMAÇÃO', 'Acervo em transformação é o título da exposição de longa duração da coleção do MASP. As obras são instaladas nos cavaletes de cristal — placas de vidro encaixadas em blocos de concreto — que ficam dispostos em fileiras sem divisórias na sala ampla do segundo andar do museu.', 'Sem artista definido', 'acervo1.jpg')
+    const Expo("FAVELA-RAIZ", 'FAVELA-RAIZ é uma ocupação-manifesto, composta de cinco partes – três internas e duas externas – que nos levam aos fundamentos da formação da identidade das pessoas que habitam esses territórios: a ancestralidade, as mulheres, a força do trabalho e os abrigos materiais e afetivos.', 'A obra é composta por diversos autores e colaboradores', 'favelaraiz.jpg'),
+    const Expo('RAP EM QUADRINHOS', ' O Museu das Favelas e Ação Educativa apresentam a exposição “Rap em Quadrinhos”. A exposição surgiu através colaboração entre o ilustrador Wagner Loud e o Youtuber Løad, com o propósito de prestar homenagem à algumas personalidades do rap nacional, retratando-as como renomados super-heróis e super-heroínas das histórias em quadrinhos. Ao todo, são 19 homenageados, habilmente representados como ícones dentro do vasto universo dos quadrinhos.', 'Wagner Loud', 'RAP.jpg')
   ];
 
   List<Expo> favoritos = [];
