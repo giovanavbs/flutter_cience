@@ -297,7 +297,7 @@ class menuInferior extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const FavoritoTela(favoritos: [],)),
+                  MaterialPageRoute(builder: (context) => SemFavoritos()),
                 );
               },
               child: Padding(
