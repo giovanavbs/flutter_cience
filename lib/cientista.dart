@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'main.dart';
 import 'favorito.dart';
 
+/*
 void cientistaTela(BuildContext context) {
   Navigator.push(
     context,
@@ -134,3 +135,4 @@ class Biografia extends StatelessWidget {
   }
 }
 
+*/

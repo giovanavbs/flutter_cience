@@ -1,97 +1,121 @@
 import 'package:flutter/material.dart';
-import 'cientista.dart';
+import 'package:flutter_cience/expo.dart';
+//import 'exposicao.dart';
 import 'main.dart';
 
-
-
 void main() {
-  runApp(const Favorito());
+  runApp(const FavoritoTela(favoritos: [],));
 }
 
-class Favorito extends StatelessWidget {
-  const Favorito({super.key});
+class FavoritoTela extends StatelessWidget {
+  final List<Expo> favoritos;
 
-@override
-Widget build(BuildContext context) {
-  return MaterialApp(
-    home: Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("assets/images/background_cinza.png"),
-            fit: BoxFit.cover,
-          ),
-        ),
-        child: const Stack(
-          children: [
-            Positioned(
-              left: 0,
-              right: 0,
-              top: 0, // vai ficar na parte superior entao sem bottom
-              child: menuSuperior(),
-            ),
-            Positioned.fill( // deixa as duas classes de menu sobreporem a lista
-              top: 80, // pra lista nao ficar por baixo do container do menu
-              child: Center(
-              child: FavoritoLista(),
-              ),
-            ),
-            Positioned(
-              left: 0, 
-              right: 0,
-              bottom: 0, // parte inferior entao sem top
-              child: menuInferior(),
-            ),
-          ],
-        ),
-      ),
-    ),
-  );
- }
-}
-
-
-// classe favoritar com o container do cientista sendo exibido quando o usuario favorita
-
-class FavoritoLista extends StatefulWidget {
-  const FavoritoLista({super.key});
-
-  @override
-  State<FavoritoLista> createState() => _FavoritoListaState();
-}
-
-class _FavoritoListaState extends State<FavoritoLista> {
-  bool favoritar = true;
+  const FavoritoTela({super.key, required this.favoritos});
 
   @override
   Widget build(BuildContext context) {
-    Widget imgAtual;
-
-    if (favoritar) {
-      imgAtual = Image.asset('assets/images/favoritos.png');
-    } else {
-      imgAtual = Image.asset('assets/images/favoritado.png');
-    }
-
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          favoritar = favoritar == false;
-        });
-      },
-      child: Container(
-        width: 50,
-        height: 50,
-        child: Stack(
-          children: [
-            if (favoritar == false)
-              Container(
-                width: 200,
-                height: 200, 
-                child: Biografia(),
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+            backgroundColor: const Color(0xFF363636),
+            leading: IconButton(
+              icon: const Icon(Icons.arrow_back),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+            title: Center(
+              child: Image.asset(
+                'assets/images/fantastic.png',
+                width: 50,
+                height: 50,
               ),
+            ),
+          ),
+        body: Stack(
+          children: [
             Positioned.fill(
-              child: imgAtual,
+              child: Container(
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("assets/images/background_cinza.png"),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+            ),
+            Positioned.fill(
+              top: 10,
+              child: ListView.builder(
+                itemCount: favoritos.length,
+                itemBuilder: (context, index) {
+                  final expo = favoritos[index];
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        SizedBox(
+                          height: 200,
+                          child: Stack(
+                            alignment: Alignment.bottomLeft,
+                            children: <Widget>[
+                              Container(
+                                width: 400,
+                                decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                    image: AssetImage("assets/images/${expo.img}"),
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                              Positioned(
+                                child: Container(
+                                  color: const Color(0xFF00FFD1),
+                                  width: 150,
+                                  height: 40,
+                                  child: Center(child: Text(expo.nomeExpo)),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 100,
+                          child: Column(
+                            children: <Widget>[
+                              Flexible(
+                                child: Container(
+                                  width: 400,
+                                  color: const Color(0xFF04856D),
+                                  child: Center(child: Text(expo.descricaoExpo)),
+                                ),
+                              ),
+                              Flexible(
+                                child: Container(
+                                  width: 400,
+                                  height: 40,
+                                  color: const Color(0xFF00FFD1),
+                                  child: Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Text(expo.nomeCientista),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
+            ),
+            const Positioned(
+              left: 0,
+              right: 0,
+              bottom: 0,
+              child: menuInferior(),
             ),
           ],
         ),
@@ -99,5 +123,3 @@ class _FavoritoListaState extends State<FavoritoLista> {
     );
   }
 }
-
-// por chamar essa classe no cientista.dart pra imagem de favoritar aparecer os container sao exibidos nas duas telas e no tamanho errado(provavelmente por causa da definição do tamanho da imagem de favoritar) nao sei como resolver esses 2 erros

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_cience/favorito.dart';
 import 'museu.dart'; 
-import 'cientista.dart'; 
 import 'login.dart'; 
+import 'exposicao.dart';
 
 void main() {
   runApp(const MainApp());
@@ -103,7 +103,6 @@ class menuSuperior extends StatelessWidget {
     );
   }
 }
-
 // classe real da tela
 class Inicio extends StatelessWidget {
   const Inicio({Key? key}) : super(key: key);
@@ -271,7 +270,7 @@ class menuInferior extends StatelessWidget {
                 );
               },
               child: Padding(
-                padding: const EdgeInsets.only(left: 60.0, right: 0.0, top: 0.0),
+                padding: const EdgeInsets.only(left: 0.0, right: 0.0, top: 0.0),
                 child: Container(
                   width: 80,
                   height: 80,
@@ -298,11 +297,11 @@ class menuInferior extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Favorito()),
+                  MaterialPageRoute(builder: (context) => const FavoritoTela(favoritos: [],)),
                 );
               },
               child: Padding(
-                padding: const EdgeInsets.only(right: 60.0, left: 0.0),
+                padding: const EdgeInsets.only(right: 20.0, left: 0.0),
                 child: SizedBox(
                   width: 80,
                   height: 80,
