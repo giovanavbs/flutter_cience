@@ -64,7 +64,7 @@ class ExposicaoAPP extends State<ExposicaoApp> {
     const Expo('RAP EM QUADRINHOS', ' O Museu das Favelas e Ação Educativa apresentam a exposição “Rap em Quadrinhos”. A exposição surgiu através colaboração entre o ilustrador Wagner Loud e o Youtuber Løad, com o propósito de prestar homenagem à algumas personalidades do rap nacional, retratando-as como renomados super-heróis e super-heroínas das histórias em quadrinhos. Ao todo, são 19 homenageados, habilmente representados como ícones dentro do vasto universo dos quadrinhos.', 'Wagner Loud', 'RAP.jpg')
   ];
 
-  List<Expo> favoritos = [];
+  static List<Expo> favoritos = [];
 
   @override
   void initState() {
@@ -72,16 +72,17 @@ class ExposicaoAPP extends State<ExposicaoApp> {
   }
 
   // alterar a imagem do fav e lista de favoritos
-  void AlterarFavorito(Expo expo) {
-    setState(() {
-      if (favoritos.contains(expo)) {
-        favoritos.remove(expo);
-      } else {
-        favoritos.add(expo);
-      }
-    });
-    NavFavoritos(context, favoritos);
-  }
+void AlterarFavorito(Expo expo) {
+  setState(() {
+    if (favoritos.contains(expo)) {
+      favoritos.remove(expo);
+    } else {
+      favoritos.add(expo);
+    }
+  });
+  NavFavoritos(context, favoritos);
+}
+
 
   // mandar pra tela fav com as variaveis pra criar a lista de la
   void NavFavoritos(BuildContext context, List<Expo> favoritos) {
@@ -176,7 +177,7 @@ class ExposicaoAPP extends State<ExposicaoApp> {
                           color: exposicaoFavorita ? Colors.red : Colors.white, // se a exposição for favorita - icon vermelho, se nao icon branco
                         ),
                         onPressed: () {
-                          AlterarFavorito(expo); // chama o metodo e entrega o parametro com as variavies
+                          AlterarFavorito(expo); // chama o método e entrega o parâmetro com as variáveis
                         },
                       ),
                     ),
@@ -189,4 +190,7 @@ class ExposicaoAPP extends State<ExposicaoApp> {
       ),
     );
   }
+}
+List<Expo> SalvarFavoritos3() {
+  return ExposicaoAPP.favoritos;
 }

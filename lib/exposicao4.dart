@@ -64,7 +64,8 @@ class ExpAPP extends State<ExpApp> {
     const Expo('JARDIM DA BÍBLIA', 'Um dos pontos mais surpreendentes da visitação ao MAB é o Jardim da Bíblia. No pátio externo foi construído um jardim com 17 espécies de árvores mencionadas na Bíblia – cedro, oliveira, tamareira, videira, romeira etc. - distribuídas de forma paisagística e ornamental. Entre as árvores, plantas bíblicas como o joio, o trigo, o papiro, entre outras, foram espalhadas.', 'Sem artista definido', 'jardim.jpg')
   ];
 
-  List<Expo> favoritos = [];
+
+  static List<Expo> favoritos = [];
 
   @override
   void initState() {
@@ -72,16 +73,17 @@ class ExpAPP extends State<ExpApp> {
   }
 
   // alterar a imagem do fav e lista de favoritos
-  void AlterarFavorito(Expo expo) {
-    setState(() {
-      if (favoritos.contains(expo)) {
-        favoritos.remove(expo);
-      } else {
-        favoritos.add(expo);
-      }
-    });
-    NavFavoritos(context, favoritos);
-  }
+void AlterarFavorito(Expo expo) {
+  setState(() {
+    if (favoritos.contains(expo)) {
+      favoritos.remove(expo);
+    } else {
+      favoritos.add(expo);
+    }
+  });
+  NavFavoritos(context, favoritos);
+}
+
 
   // mandar pra tela fav com as variaveis pra criar a lista de la
   void NavFavoritos(BuildContext context, List<Expo> favoritos) {
@@ -141,7 +143,7 @@ class ExpAPP extends State<ExpApp> {
                           ),
                         ),
                         SizedBox(
-                          height: 300,
+                          height: 200,
                           child: Column(
                             children: <Widget>[
                               Flexible(
@@ -176,7 +178,7 @@ class ExpAPP extends State<ExpApp> {
                           color: exposicaoFavorita ? Colors.red : Colors.white, // se a exposição for favorita - icon vermelho, se nao icon branco
                         ),
                         onPressed: () {
-                          AlterarFavorito(expo); // chama o metodo e entrega o parametro com as variavies
+                          AlterarFavorito(expo); // chama o método e entrega o parâmetro com as variáveis
                         },
                       ),
                     ),
@@ -189,4 +191,7 @@ class ExpAPP extends State<ExpApp> {
       ),
     );
   }
+}
+List<Expo> SalvarFavoritos4() {
+  return ExpAPP.favoritos;
 }

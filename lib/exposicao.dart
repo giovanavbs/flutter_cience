@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_cience/expo.dart';
 import 'favorito.dart';
 import 'main.dart';
+import 'expo.dart';
 
 void main() {
   runApp(const Exp());
@@ -10,44 +10,44 @@ void main() {
 class Exp extends StatelessWidget {
   const Exp({super.key});
 
-@override
-Widget build(BuildContext context) {
-  return MaterialApp(
-    home: Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("assets/images/background_cinza.png"),
-            fit: BoxFit.cover,
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        body: Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/images/background_cinza.png"),
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: const Stack(
+            children: [
+              Positioned(
+                left: 0,
+                right: 0,
+                top: 0, // vai ficar na parte superior entao sem bottom
+                child: menuSuperior(),
+              ),
+
+              Positioned.fill( // deixa as duas classes de menu sobreporem a lista
+                top: 80, // pra lista nao ficar por baixo do container do menu
+                child: Center(
+                  child: ExposiApp(),
+                ),
+              ),
+              Positioned(
+                left: 0, 
+                right: 0,
+                bottom: 0, // parte inferior entao sem top
+                child: menuInferior(),
+              ),
+            ],
           ),
         ),
-        child: const Stack(
-          children: [
-            Positioned(
-              left: 0,
-              right: 0,
-              top: 0, // vai ficar na parte superior entao sem bottom
-              child: menuSuperior(),
-            ),
-
-            Positioned.fill( // deixa as duas classes de menu sobreporem a lista
-              top: 80, // pra lista nao ficar por baixo do container do menu
-              child: Center(
-                child: ExposiApp(),
-              ),
-            ),
-            Positioned(
-              left: 0, 
-              right: 0,
-              bottom: 0, // parte inferior entao sem top
-              child: menuInferior(),
-            ),
-          ],
-        ),
       ),
-    ),
-  );
- }
+    );
+  }
 }
 
 class ExposiApp extends StatefulWidget {
@@ -64,7 +64,7 @@ class ExposiAPP extends State<ExposiApp> {
     const Expo('ACERVO EM TRANSFORMAÇÃO', 'Acervo em transformação é o título da exposição de longa duração da coleção do MASP. As obras são instaladas nos cavaletes de cristal — placas de vidro encaixadas em blocos de concreto — que ficam dispostos em fileiras sem divisórias na sala ampla do segundo andar do museu.', 'Sem artista definido', 'acervo1.jpg')
   ];
 
-  List<Expo> favoritos = [];
+  static List<Expo> favoritos = [];
 
   @override
   void initState() {
@@ -72,16 +72,19 @@ class ExposiAPP extends State<ExposiApp> {
   }
 
   // alterar a imagem do fav e lista de favoritos
-  void AlterarFavorito(Expo expo) {
-    setState(() {
-      if (favoritos.contains(expo)) {
-        favoritos.remove(expo);
-      } else {
-        favoritos.add(expo);
-      }
-    });
-    NavFavoritos(context, favoritos);
-  }
+void AlterarFavorito(Expo expo) {
+  setState(() {
+    if (favoritos.contains(expo)) {
+      favoritos.remove(expo);
+    } else {
+      favoritos.add(expo);
+    }
+  });
+  NavFavoritos(context, favoritos);
+}
+
+
+
 
   // mandar pra tela fav com as variaveis pra criar a lista de la
   void NavFavoritos(BuildContext context, List<Expo> favoritos) {
@@ -176,7 +179,7 @@ class ExposiAPP extends State<ExposiApp> {
                           color: exposicaoFavorita ? Colors.red : Colors.white, // se a exposição for favorita - icon vermelho, se nao icon branco
                         ),
                         onPressed: () {
-                          AlterarFavorito(expo); // chama o metodo e entrega o parametro com as variavies
+                          AlterarFavorito(expo); // chama o método e entrega o parâmetro com as variáveis
                         },
                       ),
                     ),
@@ -189,4 +192,7 @@ class ExposiAPP extends State<ExposiApp> {
       ),
     );
   }
+}
+List<Expo> SalvarFavoritos() {
+  return ExposiAPP.favoritos;
 }

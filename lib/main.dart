@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_cience/favorito.dart';
 import 'museu.dart'; 
 import 'login.dart'; 
-import 'exposicao.dart';
+import 'expo.dart';
+import 'package:flutter_cience/exposicao.dart';
+import 'exposicao2.dart';
+import 'exposicao3.dart';
+import 'exposicao4.dart';
+import 'package:flutter_cience/favorito.dart';
 
 void main() {
   runApp(const MainApp());
@@ -295,11 +300,44 @@ class menuInferior extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => SemFavoritos()),
-                );
-              },
+                  List<Expo> favoritos = SalvarFavoritos();
+                  List<Expo> favoritos2 = SalvarFavoritos2();
+                  List<Expo> favoritos3 = SalvarFavoritos3();
+                  List<Expo> favoritos4 = SalvarFavoritos4();
+                 //favoritos.addAll(favoritos2);
+                  //favoritos.addAll(favoritos3);
+                  //favoritos.addAll(favoritos4); 
+
+                  
+                // Adiciona favoritos de favoritos2, favoritos3 e favoritos4 somente se não estiverem na lista de favoritos
+                for (var expo in favoritos2) {
+                  if (!favoritos.contains(expo)) {
+                    favoritos.add(expo);
+                  }
+                }
+                for (var expo in favoritos3) {
+                  if (!favoritos.contains(expo)) {
+                    favoritos.add(expo);
+                  }
+                }
+                for (var expo in favoritos4) {
+                  if (!favoritos.contains(expo)) {
+                    favoritos.add(expo);
+                  }
+                } 
+
+                  if (favoritos.isNotEmpty) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => FavoritoTela(favoritos: favoritos)),
+                    );
+                  } else {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SemFavoritos()), 
+                    );
+                  }
+                },
               child: Padding(
                 padding: const EdgeInsets.only(right: 20.0, left: 0.0),
                 child: SizedBox(
