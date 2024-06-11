@@ -7,7 +7,6 @@ import 'package:flutter_cience/exposicao.dart';
 import 'exposicao2.dart';
 import 'exposicao3.dart';
 import 'exposicao4.dart';
-import 'package:flutter_cience/favorito.dart';
 
 void main() {
   runApp(const MainApp());
@@ -271,7 +270,7 @@ class menuInferior extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Museus()),
+                  MaterialPageRoute(builder: (context) => const Museus()),
                 );
               },
               child: Padding(

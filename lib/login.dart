@@ -1,9 +1,11 @@
+import 'package:flutter_cience/museu.dart';
 import 'main.dart';
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(const Login());
 }
+
 
 class Login extends StatelessWidget {
   const Login({super.key});
@@ -123,10 +125,15 @@ class _LoginFormState extends State<LoginForm> with SingleTickerProviderStateMix
       ),
     );
   }
+  
 
   Widget FormLogin() {
+    final _formKey = GlobalKey<FormState>();
+    final TextEditingController controller = TextEditingController();
     return Padding(
       padding: const EdgeInsets.all(20.0),
+      child: Form(
+      key: _formKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -136,160 +143,7 @@ class _LoginFormState extends State<LoginForm> with SingleTickerProviderStateMix
           ),
           const SizedBox(height: 10),
           TextFormField(
-            decoration: InputDecoration(
-              prefixIcon: Icon(Icons.person),
-              hintText: 'Digite o usuário',
-              filled: true,
-              fillColor: Colors.grey[200],
-              border: const OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                borderSide: BorderSide.none,
-              ),
-            ),
-          ),
-          const SizedBox(height: 20),
-          const Text(
-            'Senha',
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(height: 10),
-          TextFormField(
-            obscureText: true,
-            decoration: InputDecoration(
-              prefixIcon: Icon(Icons.lock),
-              hintText: 'Digite a senha',
-              filled: true,
-              fillColor: Colors.grey[200],
-              border: const OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                borderSide: BorderSide.none,
-              ),
-            ),
-          ),
-          const SizedBox(height: 20),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              padding: const EdgeInsets.symmetric(vertical: 15),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-              backgroundColor: Colors.blue,
-            ),
-            onPressed: () {
-              // ação de login 
-            },
-            child: const Text(
-              'Login',
-              style: TextStyle(fontSize: 16, color: Colors.white),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget FormCadastro() {
-    return Padding(
-      padding: const EdgeInsets.all(20.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          const Text(
-            'Nome',
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(height: 10),
-          TextFormField(
-            decoration: InputDecoration(
-              prefixIcon: Icon(Icons.person),
-              hintText: 'Digite seu nome',
-              filled: true,
-              fillColor: Colors.grey[200],
-              border: const OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                borderSide: BorderSide.none,
-              ),
-            ),
-          ),
-          const SizedBox(height: 20),
-          const Text(
-            'Usuário',
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(height: 10),
-          TextFormField(
-            decoration: InputDecoration(
-              prefixIcon: Icon(Icons.person),
-              hintText: 'Digite o usuário',
-              filled: true,
-              fillColor: Colors.grey[200],
-              border: const OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                borderSide: BorderSide.none,
-              ),
-            ),
-          ),
-          const SizedBox(height: 20),
-          const Text(
-            'Senha',
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(height: 10),
-          TextFormField(
-            obscureText: true,
-            decoration: InputDecoration(
-              prefixIcon: Icon(Icons.lock),
-              hintText: 'Digite a senha',
-              filled: true,
-              fillColor: Colors.grey[200],
-              border: const OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                borderSide: BorderSide.none,
-              ),
-            ),
-          ),
-          const SizedBox(height: 20),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              padding: const EdgeInsets.symmetric(vertical: 15),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-              backgroundColor: Colors.blue,
-            ),
-            onPressed: () {
-              // ação de cadastro
-            },
-            child: const Text(
-              'Cadastrar',
-              style: TextStyle(fontSize: 16, color: Colors.white),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-/* antigo login sem a animação
-class LoginForm extends StatelessWidget {
-  const LoginForm({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(20.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Container(
-            margin: const EdgeInsets.only(bottom: 10),
-            child: const Text(
-              'Usuário',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            ),
-          ),
-          TextFormField(
+            controller: controller,
             decoration: InputDecoration(
               prefixIcon: const Icon(Icons.person),
               hintText: 'Digite o usuário',
@@ -300,14 +154,19 @@ class LoginForm extends StatelessWidget {
                 borderSide: BorderSide.none,
               ),
             ),
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Por favor, insira seu usuário';
+              }
+              return null;
+            },
           ),
-          Container(
-            margin: const EdgeInsets.symmetric(vertical: 20),
-            child: const Text(
-              'Senha',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            ),
+          const SizedBox(height: 20),
+          const Text(
+            'Senha',
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           ),
+          const SizedBox(height: 10),
           TextFormField(
             obscureText: true,
             decoration: InputDecoration(
@@ -320,29 +179,149 @@ class LoginForm extends StatelessWidget {
                 borderSide: BorderSide.none,
               ),
             ),
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Por favor, insira sua senha';
+              }
+              return null;
+            },
           ),
-          Container(
-            margin: const EdgeInsets.symmetric(vertical: 20),
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(vertical: 15),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                backgroundColor: const Color(0xFF0072ce),
+          const SizedBox(height: 20),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              padding: const EdgeInsets.symmetric(vertical: 15),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
               ),
-              onPressed: () {
-                // ação de login
-              },
-              child: const Text(
-                'Login',
-                style: TextStyle(fontSize: 16, color: Colors.white),
+              backgroundColor: Colors.blue,
+            ),
+            onPressed: () {
+              if (_formKey.currentState!.validate()) {
+                Navigator.push(
+                context,
+                MaterialPageRoute(builder:
+                (context) => const Museus()),
+                );// ação de login 
+              }
+            },
+            child: const Text(
+              'Login',
+              style: TextStyle(fontSize: 16, color: Colors.white),
+            ),
+          ),
+      ],),
+      ),);
+  }
+
+  
+
+  Widget FormCadastro() {
+    final _formKey = GlobalKey<FormState>();
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: Form(
+      key: _formKey,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          const Text(
+            'Nome',
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(height: 10),
+          TextFormField(
+            decoration: InputDecoration(
+              prefixIcon: const Icon(Icons.person),
+              hintText: 'Digite seu nome',
+              filled: true,
+              fillColor: Colors.grey[200],
+              border: const OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                borderSide: BorderSide.none,
               ),
+            ),
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Por favor, insira seu nome';
+              }
+              return null;
+            },
+          ),
+          const SizedBox(height: 20),
+          const Text(
+            'Usuário',
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(height: 10),
+          TextFormField(
+            decoration: InputDecoration(
+              prefixIcon: const Icon(Icons.person),
+              hintText: 'Digite o usuário',
+              filled: true,
+              fillColor: Colors.grey[200],
+              border: const OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                borderSide: BorderSide.none,
+              ),
+            ),
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Por favor, insira um usuário';
+              }
+              return null;
+            },
+          ),
+          const SizedBox(height: 20),
+          const Text(
+            'Senha',
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(height: 10),
+          TextFormField(
+            obscureText: true,
+            decoration: InputDecoration(
+              prefixIcon: const Icon(Icons.lock),
+              hintText: 'Digite a senha',
+              filled: true,
+              fillColor: Colors.grey[200],
+              border: const OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                borderSide: BorderSide.none,
+              ),
+            ),
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Por favor, insira sua senha';
+              }
+              return null;
+            },
+          ),
+          const SizedBox(height: 20),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              padding: const EdgeInsets.symmetric(vertical: 15),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              backgroundColor: Colors.blue,
+            ),
+            onPressed: () {
+              if (_formKey.currentState!.validate()) {
+                // ação de login 
+                Navigator.push(
+                context,
+                MaterialPageRoute(builder:
+                (context) => const Museus()),
+                );
+              }
+            },
+            child: const Text(
+              'Cadastrar',
+              style: TextStyle(fontSize: 16, color: Colors.white),
             ),
           ),
         ],
       ),
-    );
+    ),);
   }
 }
-*/
