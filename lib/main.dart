@@ -313,28 +313,12 @@ class menuInferior extends StatelessWidget {
                   List<Expo> favoritos2 = SalvarFavoritos2();
                   List<Expo> favoritos3 = SalvarFavoritos3();
                   List<Expo> favoritos4 = SalvarFavoritos4();
-                 //favoritos.addAll(favoritos2);
-                  //favoritos.addAll(favoritos3);
-                  //favoritos.addAll(favoritos4); 
+                  favoritos.addAll(favoritos2);
+                  favoritos.addAll(favoritos3);
+                  favoritos.addAll(favoritos4); 
 
                   
-                // Adiciona favoritos de favoritos2, favoritos3 e favoritos4 somente se não estiverem na lista de favoritos
-                for (var expo in favoritos2) {
-                  if (!favoritos.contains(expo)) {
-                    favoritos.add(expo);
-                  }
-                }
-                for (var expo in favoritos3) {
-                  if (!favoritos.contains(expo)) {
-                    favoritos.add(expo);
-                  }
-                }
-                for (var expo in favoritos4) {
-                  if (!favoritos.contains(expo)) {
-                    favoritos.add(expo);
-                  }
-                } 
-
+          
                   if (favoritos.isNotEmpty) {
                     Navigator.push(
                       context,
