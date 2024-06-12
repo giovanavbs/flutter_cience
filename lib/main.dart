@@ -88,11 +88,21 @@ class menuSuperior extends StatelessWidget {
             top: 0,
             bottom: 0, 
             child: GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Login()),
-                );
+                            onTap: () {
+                if (SalvarLogin.dadosLogin == null) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Login()),
+                  );
+                } else {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Perfil(
+                              dadosLogin: SalvarLogin.dadosLogin!,
+                            )),
+                  );
+                }
               },
               child: Image.asset(
                 'assets/images/login.png',
