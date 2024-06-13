@@ -12,6 +12,9 @@ class Exp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final List<Expo> expos = ModalRoute.of(context)!.settings.arguments as List<Expo>;
+
     return MaterialApp(
       home: Scaffold(
         body: Container(
@@ -21,9 +24,9 @@ class Exp extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-          child: const Stack(
+          child: Stack(
             children: [
-              Positioned(
+              const Positioned(
                 left: 0,
                 right: 0,
                 top: 0, // vai ficar na parte superior entao sem bottom
@@ -33,10 +36,10 @@ class Exp extends StatelessWidget {
               Positioned.fill( // deixa as duas classes de menu sobreporem a lista
                 top: 80, // pra lista nao ficar por baixo do container do menu
                 child: Center(
-                  child: ExposiApp(),
+                  child: ExposiApp(expos: expos),
                 ),
               ),
-              Positioned(
+              const Positioned(
                 left: 0, 
                 right: 0,
                 bottom: 0, // parte inferior entao sem top
@@ -51,17 +54,15 @@ class Exp extends StatelessWidget {
 }
 
 class ExposiApp extends StatefulWidget {
-  const ExposiApp({super.key});
+  final List<Expo> expos;
+
+  const ExposiApp({required this.expos, super.key});
 
   @override
   ExposiAPP createState() => ExposiAPP();
 }
 
 class ExposiAPP extends State<ExposiApp> {
-  // Lista para armazenar os itens favoritos
-  
-  List<Expo> expos = [];
-
   static List<Expo> favoritos = [];
 
   @override
@@ -70,16 +71,16 @@ class ExposiAPP extends State<ExposiApp> {
   }
 
   // alterar a imagem do fav e lista de favoritos
-void AlterarFavorito(Expo expo) {
-  setState(() {
-    if (favoritos.contains(expo)) {
-      favoritos.remove(expo);
-    } else {
-      favoritos.add(expo);
-    }
-  });
-  NavFavoritos(context, favoritos);
-}
+  void AlterarFavorito(Expo expo) {
+    setState(() {
+      if (favoritos.contains(expo)) {
+        favoritos.remove(expo);
+      } else {
+        favoritos.add(expo);
+      }
+    });
+    NavFavoritos(context, favoritos);
+  }
 
   // mandar pra tela fav com as variaveis pra criar a lista de la
   void NavFavoritos(BuildContext context, List<Expo> favoritos) {
@@ -93,17 +94,15 @@ void AlterarFavorito(Expo expo) {
 
   @override
   Widget build(BuildContext context) {
-     final expo = ModalRoute.of(context)!.settings.arguments as List<Expo>;
     return Scaffold(
-        backgroundColor: Colors.transparent,
-        body: ListView.builder(
-        itemCount: expos.length,
+      backgroundColor: Colors.transparent,
+      body: ListView.builder(
+        itemCount: widget.expos.length,
         shrinkWrap: true,
         padding: const EdgeInsets.all(5),
         scrollDirection: Axis.vertical,
         itemBuilder: (context, index) {
-         
-        //  final exposicaoFavorita = favoritos.contains(expo); // verifica se a lista possui o elemento e retorna true, bool
+          final exposicaoFavorita = favoritos.contains(widget.expos[index]); // verifica se a lista possui o elemento e retorna true, bool
           return Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
@@ -123,7 +122,7 @@ void AlterarFavorito(Expo expo) {
                                 width: 400,
                                 decoration: BoxDecoration(
                                   image: DecorationImage(
-                                    image: AssetImage(expo[1].img),
+                                    image: AssetImage('assets/images/${widget.expos[index].img}'),
                                     fit: BoxFit.cover,
                                   ),
                                 ),
@@ -133,7 +132,7 @@ void AlterarFavorito(Expo expo) {
                                   color: const Color(0xFF00FFD1),
                                   width: 150,
                                   height: 40,
-                                  child: Center(child: Text(expo[1].nomeExpo)),
+                                  child: Center(child: Text(widget.expos[index].nomeExpo)),
                                 ),
                               ),
                             ],
@@ -147,7 +146,7 @@ void AlterarFavorito(Expo expo) {
                                 child: Container(
                                   width: 400,
                                   color: const Color(0xFF04856D),
-                                  child: Center(child: Text(expo[1].descricaoExpo)),
+                                  child: Center(child: Text(widget.expos[index].descricaoExpo)),
                                 ),
                               ),
                               Flexible(
@@ -157,7 +156,7 @@ void AlterarFavorito(Expo expo) {
                                   color: const Color(0xFF00FFD1),
                                   child: Align(
                                     alignment: Alignment.centerLeft,
-                                    child: Text(expo[1].nomeCientista),
+                                    child: Text(widget.expos[index].nomeCientista),
                                   ),
                                 ),
                               ),
@@ -166,7 +165,7 @@ void AlterarFavorito(Expo expo) {
                         ),
                       ],
                     ),
-                  /* Positioned(
+                    Positioned(
                       top: 10,
                       right: 10,
                       child: IconButton(
@@ -175,10 +174,10 @@ void AlterarFavorito(Expo expo) {
                           color: exposicaoFavorita ? Colors.red : Colors.white, // se a exposição for favorita - icon vermelho, se nao icon branco
                         ),
                         onPressed: () {
-                          AlterarFavorito(expo); // chama o método e entrega o parâmetro com as variáveis
+                          AlterarFavorito(widget.expos[index]); // chama o método e entrega o parâmetro com as variaveis
                         },
                       ),
-                    ),*/
+                    )
                   ],
                 ),
               ],
@@ -189,6 +188,7 @@ void AlterarFavorito(Expo expo) {
     );
   }
 }
+
 List<Expo> SalvarFavoritos() {
   return ExposiAPP.favoritos;
 }

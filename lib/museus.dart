@@ -11,8 +11,10 @@ void main() {
 class Museus extends StatelessWidget {
   const Museus({super.key});
 
+  
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
       home: Scaffold(
         body: Container(
@@ -31,7 +33,8 @@ class Museus extends StatelessWidget {
               child: menuSuperior(), // import da main.dart pra nao colar a classe do menu aqui de novo
             ),
             Positioned.fill( // deixa as duas classes de menu sobreporem a lista
-              top: 80, // pra lista nao ficar por baixo do container do menu
+              top: 80, 
+              bottom: 80, // pra nao ficar por baixo/cima dos menus
               child: Center(
                 child: MuseusLista(),
               ),
@@ -57,6 +60,8 @@ class MuseusLista extends StatefulWidget {
   MuseusLISTA createState() => MuseusLISTA();
 }
 class MuseusLISTA extends State<MuseusLista> {
+
+
 
     @override
   void initState() {
@@ -103,16 +108,17 @@ List<Museu> museus = <Museu>[
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Exp(),
-                    settings: RouteSettings(
-                    arguments:museus[index].expos,
+                    MaterialPageRoute(
+                      builder: (context) => const Exp(),
+                      settings: RouteSettings(
+                        arguments: museus[index].expos,
+                      ),
                     ),
-                  ),
                   );
                 },
                 child: Container(
-                  height: 190,
-                  width: 190,
+                  height: 185,
+                  width: 185,
                   alignment: Alignment.centerLeft,
                   child: Stack(
                     alignment: Alignment.bottomLeft,
@@ -130,7 +136,7 @@ List<Museu> museus = <Museu>[
                         child: Container(
                           color: const Color(0xFF0072ce),
                           width: 200,
-                          height: 30,
+                          height: 40,
                           child: Center(
                             child: Text(museus[index].nome),
                               //style: TextStyle(color: Colors.white),
