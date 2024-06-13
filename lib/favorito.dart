@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_cience/expo.dart';
 //import 'exposicao.dart';
 import 'main.dart';
-import 'museu.dart';
+import 'museus.dart';
 
 void main() {
   runApp(const FavoritoTela(favoritos: [],));

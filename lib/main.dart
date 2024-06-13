@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_cience/favorito.dart';
-import 'museu.dart'; 
+import 'package:flutter_cience/museu.dart';
+import 'museus.dart'; 
 import 'login.dart'; 
 import 'expo.dart';
 import 'package:flutter_cience/exposicao.dart';
-import 'exposicao2.dart';
-import 'exposicao3.dart';
-import 'exposicao4.dart';
+
 
 void main() {
   runApp(const MainApp());
@@ -119,7 +118,9 @@ class menuSuperior extends StatelessWidget {
 }
 // classe real da tela
 class Inicio extends StatelessWidget {
-  const Inicio({Key? key}) : super(key: key);
+  const Inicio({super.key});
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -310,14 +311,6 @@ class menuInferior extends StatelessWidget {
             GestureDetector(
               onTap: () {
                   List<Expo> favoritos = SalvarFavoritos();
-                  List<Expo> favoritos2 = SalvarFavoritos2();
-                  List<Expo> favoritos3 = SalvarFavoritos3();
-                  List<Expo> favoritos4 = SalvarFavoritos4();
-                  favoritos.addAll(favoritos2);
-                  favoritos.addAll(favoritos3);
-                  favoritos.addAll(favoritos4); 
-
-                  
           
                   if (favoritos.isNotEmpty) {
                     Navigator.push(

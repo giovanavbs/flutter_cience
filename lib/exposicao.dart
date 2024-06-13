@@ -59,10 +59,8 @@ class ExposiApp extends StatefulWidget {
 
 class ExposiAPP extends State<ExposiApp> {
   // Lista para armazenar os itens favoritos
-  List<Expo> expos = [
-    const Expo("FRANCIS BACON: A BELEZA DA CARNE", 'O pintor irlandês Francis Bacon (1909-1992) foi um dos artistas mais extraordinários do século 20, e esta é a primeira exposição individual no Brasil dedicada a sua obra. Ao criar um conjunto de pinturas tão radical quanto arrebatador, o artista revolucionou o modo de pintar a figura humana.', 'FRANCIS BACON', 'FRANCIS.png'),
-    const Expo('ACERVO EM TRANSFORMAÇÃO', 'Acervo em transformação é o título da exposição de longa duração da coleção do MASP. As obras são instaladas nos cavaletes de cristal — placas de vidro encaixadas em blocos de concreto — que ficam dispostos em fileiras sem divisórias na sala ampla do segundo andar do museu.', 'Sem artista definido', 'acervo1.jpg')
-  ];
+  
+  List<Expo> expos = [];
 
   static List<Expo> favoritos = [];
 
@@ -83,9 +81,6 @@ void AlterarFavorito(Expo expo) {
   NavFavoritos(context, favoritos);
 }
 
-
-
-
   // mandar pra tela fav com as variaveis pra criar a lista de la
   void NavFavoritos(BuildContext context, List<Expo> favoritos) {
     Navigator.push(
@@ -98,16 +93,17 @@ void AlterarFavorito(Expo expo) {
 
   @override
   Widget build(BuildContext context) {
+     final expo = ModalRoute.of(context)!.settings.arguments as List<Expo>;
     return Scaffold(
-      backgroundColor: Colors.transparent,
-      body: ListView.builder(
+        backgroundColor: Colors.transparent,
+        body: ListView.builder(
         itemCount: expos.length,
         shrinkWrap: true,
         padding: const EdgeInsets.all(5),
         scrollDirection: Axis.vertical,
         itemBuilder: (context, index) {
-          final expo = expos[index];
-          final exposicaoFavorita = favoritos.contains(expo); // verifica se a lista possui o elemento e retorna true, bool
+         
+        //  final exposicaoFavorita = favoritos.contains(expo); // verifica se a lista possui o elemento e retorna true, bool
           return Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
@@ -127,7 +123,7 @@ void AlterarFavorito(Expo expo) {
                                 width: 400,
                                 decoration: BoxDecoration(
                                   image: DecorationImage(
-                                    image: AssetImage("assets/images/${expo.img}"),
+                                    image: AssetImage(expo[1].img),
                                     fit: BoxFit.cover,
                                   ),
                                 ),
@@ -137,7 +133,7 @@ void AlterarFavorito(Expo expo) {
                                   color: const Color(0xFF00FFD1),
                                   width: 150,
                                   height: 40,
-                                  child: Center(child: Text(expo.nomeExpo)),
+                                  child: Center(child: Text(expo[1].nomeExpo)),
                                 ),
                               ),
                             ],
@@ -151,7 +147,7 @@ void AlterarFavorito(Expo expo) {
                                 child: Container(
                                   width: 400,
                                   color: const Color(0xFF04856D),
-                                  child: Center(child: Text(expo.descricaoExpo)),
+                                  child: Center(child: Text(expo[1].descricaoExpo)),
                                 ),
                               ),
                               Flexible(
@@ -161,7 +157,7 @@ void AlterarFavorito(Expo expo) {
                                   color: const Color(0xFF00FFD1),
                                   child: Align(
                                     alignment: Alignment.centerLeft,
-                                    child: Text(expo.nomeCientista),
+                                    child: Text(expo[1].nomeCientista),
                                   ),
                                 ),
                               ),
@@ -170,7 +166,7 @@ void AlterarFavorito(Expo expo) {
                         ),
                       ],
                     ),
-                    Positioned(
+                  /* Positioned(
                       top: 10,
                       right: 10,
                       child: IconButton(
@@ -182,7 +178,7 @@ void AlterarFavorito(Expo expo) {
                           AlterarFavorito(expo); // chama o método e entrega o parâmetro com as variáveis
                         },
                       ),
-                    ),
+                    ),*/
                   ],
                 ),
               ],
