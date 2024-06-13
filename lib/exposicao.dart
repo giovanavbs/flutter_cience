@@ -79,7 +79,7 @@ class ExposiAPP extends State<ExposiApp> {
         favoritos.add(expo);
       }
     });
-    NavFavoritos(context, favoritos);
+    //NavFavoritos(context, favoritos);
   }
 
   // mandar pra tela fav com as variaveis pra criar a lista de la

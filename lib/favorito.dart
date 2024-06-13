@@ -47,6 +47,7 @@ class FavoritoTela extends StatelessWidget {
             ),
             Positioned.fill(
               top: 10,
+              bottom: 80,
               child: ListView.builder(
                 itemCount: favoritos.length,
                 itemBuilder: (context, index) {
